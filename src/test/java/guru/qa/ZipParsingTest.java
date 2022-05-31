@@ -17,15 +17,15 @@ import java.util.zip.ZipInputStream;
 import java.util.zip.ZipFile;
 
 
-public class SelenideFilesTest {
-   static ClassLoader cl = SelenideFilesTest.class.getClassLoader();
+public class ZipParsingTest {
+   static ClassLoader cl = ZipParsingTest.class.getClassLoader();
     String pdfName = "zipTest/junit-user-guide-5.8.2.pdf";
     String xlsName = "zipTest/sample-xlsx-file.xlsx";
     String csvName = "zipTest/sample-csv-file.csv";
 
     @Test
     @DisplayName("One test for parsing all files in zip")
-    void zipParsingTest() throws Exception {
+    void zipTest() throws Exception {
         ZipFile zf = new ZipFile(new File("src/test/resources/files/zipTest.zip"));
          ZipInputStream is = new ZipInputStream(cl.getResourceAsStream("files/zipTest.zip"));
             ZipEntry entry;
