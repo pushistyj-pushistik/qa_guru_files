@@ -32,15 +32,15 @@ public class ZipParsingTest {
             while ((entry = is.getNextEntry()) != null) {
                     try (InputStream inputStream = zf.getInputStream(entry)) {
                         if (entry.getName().equals(pdfName)) {
-                        PDF pdf = new PDF(inputStream);
-                        Assertions.assertThat(pdf.text).contains("Overview");
-                        Assertions.assertThat(entry.getName()).isEqualTo(pdfName);
-                        Assertions.assertThat(pdf.numberOfPages).isEqualTo(166);
+                            PDF pdf = new PDF(inputStream);
+                            Assertions.assertThat(pdf.text).contains("Overview");
+                            Assertions.assertThat(entry.getName()).isEqualTo(pdfName);
+                            Assertions.assertThat(pdf.numberOfPages).isEqualTo(166);
                         }
                         else if ((entry.getName()).contains(xlsName)) {
-                                XLS xls = new XLS(inputStream);
-                                String stringCellValue = xls.excel.getSheetAt(0).getRow(21).getCell(1).getStringCellValue();
-                                Assertions.assertThat(stringCellValue).contains("Belinda");
+                            XLS xls = new XLS(inputStream);
+                            String stringCellValue = xls.excel.getSheetAt(0).getRow(21).getCell(1).getStringCellValue();
+                            Assertions.assertThat(stringCellValue).contains("Belinda");
                         }
                         else if (entry.getName().equals(csvName)) {
                             CSVReader reader = new CSVReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
