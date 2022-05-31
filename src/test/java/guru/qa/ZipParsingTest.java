@@ -38,7 +38,6 @@ public class ZipParsingTest {
                         Assertions.assertThat(pdf.numberOfPages).isEqualTo(166);
                         }
                         else if ((entry.getName()).contains(xlsName)) {
-
                                 XLS xls = new XLS(inputStream);
                                 String stringCellValue = xls.excel.getSheetAt(0).getRow(21).getCell(1).getStringCellValue();
                                 Assertions.assertThat(stringCellValue).contains("Belinda");
